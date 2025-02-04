@@ -226,7 +226,7 @@ Generate all Twitter keys at [developer.twitter.com](https://developer.twitter.c
 
 ## Twitch
 
-Instructions on how to set up tokens can be found at [d-fischer.github.io/twitch-chat-client/docs/examples/basic-bot](https://d-fischer.github.io/twitch-chat-client/docs/examples/basic-bot).
+Instructions on how to set up tokens can be found at [twurple.js.org/docs/examples/chat/basic-bot](https://twurple.js.org/docs/examples/chat/basic-bot.html).
 
 | Environment variable | Description |
 |:---:|---|

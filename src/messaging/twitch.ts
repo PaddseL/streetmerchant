@@ -1,82 +1,74 @@
 import {Link, Store} from '../store/model';
 import {Print, logger} from '../logger';
-import {RefreshableAuthProvider, StaticAuthProvider} from 'twitch-auth';
-import {existsSync, promises, readFileSync} from 'fs';
-import {ChatClient} from 'twitch-chat-client';
+import {AccessToken, RefreshingAuthProvider} from '@twurple/auth';
+import {existsSync, readFileSync, writeFileSync} from 'fs';
+import {ChatClient} from '@twurple/chat';
 import {config} from '../config';
+import {MakeOptional} from '@d-fischer/shared-utils';
 
 const {twitch} = config.notifications;
 
 const messages: string[] = [];
 let alreadySaying = false;
 
-let tokenData = {
+let tokenData: MakeOptional<AccessToken, 'scope'> = {
   accessToken: twitch.accessToken,
-  expiryTimestamp: 0,
   refreshToken: twitch.refreshToken,
+  expiresIn: 0,
+  obtainmentTimestamp: 0
 };
 
 if (existsSync('./twitch.json')) {
-  tokenData = {
-    ...JSON.parse(readFileSync('./twitch.json', 'utf-8')),
-    ...tokenData,
-  };
+  tokenData = JSON.parse(readFileSync('./twitch.json', 'utf-8'));
 }
 
-const chatClient: ChatClient = new ChatClient(
-  new RefreshableAuthProvider(
-    new StaticAuthProvider(twitch.clientId, tokenData.accessToken),
-    {
-      clientSecret: twitch.clientSecret,
-      expiry:
-        tokenData.expiryTimestamp === null
-          ? null
-          : new Date(tokenData.expiryTimestamp),
-      onRefresh: async ({accessToken, refreshToken, expiryDate}) => {
-        return promises.writeFile(
-          './twitch.json',
-          JSON.stringify(
-            {
-              accessToken,
-              expiryTimestamp:
-                expiryDate === null ? null : expiryDate.getTime(),
-              refreshToken,
-            },
-            null,
-            4
-          ),
-          'utf-8'
-        );
-      },
-      refreshToken: tokenData.refreshToken,
-    }
-  ),
-  {
-    channels: [twitch.channel],
-  }
+const authProvider: RefreshingAuthProvider = new RefreshingAuthProvider(
+	{
+		clientId: twitch.clientId,
+		clientSecret: twitch.clientSecret,
+	}
 );
 
-chatClient.onJoin((channel: string, user: string) => {
-  if (channel === `#${twitch.channel}` && user === chatClient.currentNick) {
-    while (messages.length) {
-      const message: string | undefined = messages.shift();
+authProvider.onRefresh((userId: string, newTokenData: AccessToken) => writeFileSync(`./twitch.json`, JSON.stringify(newTokenData, null, 4), 'utf-8'));
 
-      if (message !== undefined) {
-        try {
-          void chatClient.say(channel, message);
-          logger.info('✔ twitch message sent');
-        } catch (error: unknown) {
-          logger.error("✖ couldn't send twitch message", error);
+let chatClient: ChatClient;
+authProvider.addUserForToken(tokenData, ['chat']).then(() => {
+  chatClient = new ChatClient(
+    {
+      authProvider,
+      channels: [twitch.channel],
+      authIntents: ['chat']
+    }
+  );
+  
+  chatClient.onJoin((channel, user) => {
+    if (channel === twitch.channel && user === chatClient.irc.currentNick) {
+      while (messages.length) {
+        const message: string | undefined = messages.shift();
+
+        if (message !== undefined) {
+          try {
+            void chatClient.say(channel, message);
+            logger.info('✔ twitch message sent');
+          } catch (error: unknown) {
+            logger.error("✖ couldn't send twitch message", error);
+          }
         }
       }
     }
+  
+    void chatClient.quit();
+  });
+  
+  chatClient.onDisconnect(() => {
+    alreadySaying = false;
+  });
+
+  if (messages.length > 0 && !alreadySaying) {
+    alreadySaying = true;
+
+    chatClient.connect();
   }
-
-  void chatClient.quit();
-});
-
-chatClient.onDisconnect(() => {
-  alreadySaying = false;
 });
 
 export function sendTwitchMessage(link: Link, store: Store) {
@@ -90,12 +82,13 @@ export function sendTwitchMessage(link: Link, store: Store) {
     logger.debug('↗ sending twitch message');
 
     messages.push(
-      `${Print.inStock(link, store)}\n${link.cartUrl ? link.cartUrl : link.url}`
+      `${Print.inStock(link, store)}\nLINK: ${link.cartUrl ? link.cartUrl : link.url}`
     );
 
-    if (!alreadySaying) {
+    if (!!chatClient && !alreadySaying) {
       alreadySaying = true;
+      
       void chatClient.connect();
     }
   }
-}
+}  
