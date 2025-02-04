@@ -21,13 +21,13 @@ export const AmazonDe: Store = {
       text: ['in den einkaufswagen'],
     },
     maxPrice: {
-      container: '.a-text-price',
+      container: '.aok-offscreen',
       euroFormat: true,
     },
     outOfStock: [
       {
         container: '#availability',
-        text: ['Derzeit nicht verfügbar'],
+        text: ['derzeit nicht verfügbar'],
       },
     ],
   },
@@ -784,6 +784,396 @@ export const AmazonDe: Store = {
       series: 'xboxss',
       url: 'https://www.amazon.de/dp/B087VM5XC6',
     },
+    // {
+    //   brand: 'asus',
+    //   model: 'astral',
+    //   series: '5080',
+    //   url: '',
+    // },
+    {
+      brand: 'asus',
+      model: 'astral oc',
+      series: '5080',
+      url: 'https://amzn.to/4hgzRsg'
+    },
+    {
+      brand: 'asus',
+      model: 'prime',
+      series: '5080',
+      url: 'https://amzn.to/3Q05wSN'
+    },
+    {
+      brand: 'asus',
+      model: 'prime oc',
+      series: '5080',
+      url: 'https://amzn.to/4jKyBz0'
+    },
+    {
+      brand: 'asus',
+      model: 'tuf',
+      series: '5080',
+      url: 'https://amzn.to/4jEDYjy'
+    },
+    {
+      brand: 'asus',
+      model: 'tuf oc',
+      series: '5080',
+      url: 'https://amzn.to/3CGPsCb'
+    },
+    {
+      brand: 'asus',
+      model: 'tuf oc',
+      series: '5080',
+      url: 'https://amzn.to/4aFbceg'
+    },
+    // {
+    //   brand: 'gainward',
+    //   model: 'phantom',
+    //   series: '5080',
+    //   url: '',
+    // },
+    // {
+    //   brand: 'gainward',
+    //   model: 'phantom gs',
+    //   series: '5080',
+    //   url: '',
+    // },
+    // {
+    //   brand: 'gainward',
+    //   model: 'phoenix',
+    //   series: '5080',
+    //   url: '',
+    // },
+    {
+      brand: 'gigabyte',
+      model: 'aero oc sff',
+      series: '5080',
+      url: 'https://amzn.to/3WIMcNr'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'aorus master',
+      series: '5080',
+      url: 'https://amzn.to/3WHJvM8'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'aorus master ice',
+      series: '5080',
+      url: 'https://amzn.to/40X0L2F'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'aorus master ice',
+      series: '5080',
+      url: 'https://amzn.to/3CmOJGt'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'aorus xtreme waterforce',
+      series: '5080',
+      url: 'https://amzn.to/4grXa0S'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'aorus xtreme waterforce',
+      series: '5080',
+      url: 'https://amzn.to/4aFMDxM'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'aorus xtreme waterforce wb',
+      series: '5080',
+      url: 'https://amzn.to/3EuBoMC'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'aorus xtreme waterforce wb',
+      series: '5080',
+      url: 'https://amzn.to/3Q2041Q'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'gaming oc',
+      series: '5080',
+      url: 'https://amzn.to/4hvw620'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'gaming oc',
+      series: '5080',
+      url: 'https://amzn.to/4gmYvpY'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'gaming oc',
+      series: '5080',
+      url: 'https://amzn.to/3Q1eXS4'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'windforce sff',
+      series: '5080',
+      url: 'https://amzn.to/4jJ3Bzt'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'windforce oc sff',
+      series: '5080',
+      url: 'https://amzn.to/40CaLNr'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'windforce oc sff',
+      series: '5080',
+      url: 'https://amzn.to/40JEJiq'
+    },
+    // {
+    //   brand: 'inno3d',
+    //   model: 'x3',
+    //   series: '5080',
+    //   url: '',
+    // },
+    // {
+    //   brand: 'inno3d',
+    //   model: 'x3 oc',
+    //   series: '5080',
+    //   url: '',
+    // },
+    {
+      brand: 'msi',
+      model: 'inspire 3x oc',
+      series: '5080',
+      url: 'https://amzn.to/4gq6HFR'
+    },
+    {
+      brand: 'msi',
+      model: 'gaming trio oc',
+      series: '5080',
+      url: 'https://amzn.to/4aOzySX'
+    },
+    {
+      brand: 'msi',
+      model: 'gaming trio oc white',
+      series: '5080',
+      url: 'https://amzn.to/410mbfo'
+    },
+    {
+      brand: 'msi',
+      model: 'suprim soc',
+      series: '5080',
+      url: 'https://amzn.to/42A3gJr'
+    },
+    {
+      brand: 'msi',
+      model: 'suprim liquid soc',
+      series: '5080',
+      url: 'https://amzn.to/4aMhLvB'
+    },
+    // {
+    //   brand: 'msi',
+    //   model: 'vanguard soc launch edition',
+    //   series: '5080',
+    //   url: '',
+    // },
+    // {
+    //   brand: 'msi',
+    //   model: 'ventus 3x',
+    //   series: '5080',
+    //   url: '',
+    // },
+    {
+      brand: 'msi',
+      model: 'ventus 3x oc',
+      series: '5080',
+      url: 'https://amzn.to/40VVqbG'
+    },
+    {
+      brand: 'msi',
+      model: 'ventus 3x oc white',
+      series: '5080',
+      url: 'https://amzn.to/4aF8PYS'
+    },
+    {
+      brand: 'palit',
+      model: 'gamerock',
+      series: '5080',
+      url: 'https://amzn.to/3EwgdtC'
+    },
+    {
+      brand: 'palit',
+      model: 'gamerock oc',
+      series: '5080',
+      url: 'https://amzn.to/4jDEA8R'
+    },
+    {
+      brand: 'pny',
+      model: 'oc',
+      series: '5080',
+      url: 'https://amzn.to/4aCeW04'
+    },
+    {
+      brand: 'pny',
+      model: 'argb oc',
+      series: '5080',
+      url: 'https://amzn.to/4aHN2jC'
+    },
+    // {
+    //   brand: 'zotac',
+    //   model: 'amp extreme infinity',
+    //   series: '5080',
+    //   url: '',
+    // },
+    // {
+    //   brand: 'zotac',
+    //   model: 'solid',
+    //   series: '5080',
+    //   url: '',
+    // },
+    // {
+    //   brand: 'zotac',
+    //   model: 'solid oc',
+    //   series: '5080',
+    //   url: '',
+    // },
+    {
+      brand: 'asus',
+      model: 'astral',
+      series: '5090',
+      url: 'https://amzn.to/4aFLKWb'
+    },
+    {
+      brand: 'asus',
+      model: 'astral oc',
+      series: '5090',
+      url: 'https://amzn.to/4jBsZr3'
+    },
+    // {
+    //   brand: 'asus',
+    //   model: 'astral lc',
+    //   series: '5090',
+    //   url: '',
+    // },
+    // {
+    //   brand: 'asus',
+    //   model: 'astral lc oc',
+    //   series: '5090',
+    //   url: '',
+    // },
+    {
+      brand: 'asus',
+      model: 'tuf',
+      series: '5090',
+      url: 'https://amzn.to/40Dhgzn'
+    },
+    {
+      brand: 'asus',
+      model: 'tuf',
+      series: '5090',
+      url: 'https://amzn.to/41adhvX'
+    },
+    {
+      brand: 'asus',
+      model: 'tuf oc',
+      series: '5090',
+      url: 'https://amzn.to/40Xi83l'
+    },
+    // {
+    //   brand: 'gainward',
+    //   model: 'phantom',
+    //   series: '5090',
+    //   url: '',
+    // },
+    {
+      brand: 'gigabyte',
+      model: 'aorus master ice',
+      series: '5090',
+      url: 'https://amzn.to/4hIZUrK'
+    },
+    // {
+    //   brand: 'gigabyte',
+    //   model: 'aorus master ice',
+    //   series: '5090',
+    //   url: '',
+    // },
+    {
+      brand: 'gigabyte',
+      model: 'gaming oc',
+      series: '5090',
+      url: 'https://amzn.to/4hnfrhb'
+    },
+    {
+      brand: 'gigabyte',
+      model: 'windforce oc',
+      series: '5090',
+      url: 'https://amzn.to/3EuBTX0'
+    },
+    // {
+    //   brand: 'inno3d',
+    //   model: 'x3',
+    //   series: '5090',
+    //   url: '',
+    // },
+    {
+      brand: 'msi',
+      model: 'gaming trio oc',
+      series: '5090',
+      url: 'https://amzn.to/3EeFDfe'
+    },
+    {
+      brand: 'msi',
+      model: 'suprim soc',
+      series: '5090',
+      url: 'https://amzn.to/4aEzi8Y'
+    },
+    {
+      brand: 'msi',
+      model: 'suprim liquid soc',
+      series: '5090',
+      url: 'https://amzn.to/4hHpn4L'
+    },
+    // {
+    //   brand: 'msi',
+    //   model: 'vanguard soc launch edition',
+    //   series: '5090',
+    //   url: '',
+    // },
+    {
+      brand: 'msi',
+      model: 'ventus 3x oc',
+      series: '5090',
+      url: 'https://amzn.to/40IQ9mu'
+    },
+    {
+      brand: 'pny',
+      model: 'oc',
+      series: '5090',
+      url: 'https://amzn.to/3CkI5Ax'
+    },
+    {
+      brand: 'pny',
+      model: 'argb oc',
+      series: '5090',
+      url: 'https://amzn.to/40Y9C40'
+    },
+    // {
+    //   brand: 'zotac',
+    //   model: 'amp extreme infinity',
+    //   series: '5090',
+    //   url: '',
+    // },
+    // {
+    //   brand: 'zotac',
+    //   model: 'solid',
+    //   series: '5090',
+    //   url: '',
+    // },
+    // {
+    //   brand: 'zotac',
+    //   model: 'solid oc',
+    //   series: '5090',
+    //   url: '',
+    // }
   ],
   name: 'amazon-de',
 };
