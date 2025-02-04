@@ -171,6 +171,7 @@ import chalk from 'chalk';
 import {UltimaInformatica} from './utlimainformatica';
 import {XtremMedia} from './xtremmedia';
 import {MicrosoftCA} from './microsoft-ca';
+import { MsiDe } from './msi-de';
 
 export const storeList = new Map([
   [AComPC.name, AComPC],
@@ -270,6 +271,7 @@ export const storeList = new Map([
   [Medimax.name, Medimax],
   [Megekko.name, Megekko],
   [Microsoft.name, Microsoft],
+  [MsiDe.name, MsiDe],
   [Ldlc.name, Ldlc],
   [LdlcEs.name, LdlcEs],
   [Materiel.name, Materiel],
