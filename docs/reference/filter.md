@@ -11,6 +11,10 @@
 | `MAX_PRICE_SERIES_4080_12G` | Maximum price allowed for a match, applies 4080 12G series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
 | `MAX_PRICE_SERIES_4080_16G` | Maximum price allowed for a match, applies 4080 16G series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
 | `MAX_PRICE_SERIES_4090` | Maximum price allowed for a match, applies 4090 series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
+| `MAX_PRICE_SERIES_5070` | Maximum price allowed for a match, applies 5070 series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
+| `MAX_PRICE_SERIES_5070TI` | Maximum price allowed for a match, applies 5070 Ti series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
+| `MAX_PRICE_SERIES_5080` | Maximum price allowed for a match, applies 5080 series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
+| `MAX_PRICE_SERIES_5090` | Maximum price allowed for a match, applies 5090 series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
 | `MAX_PRICE_SERIES_CORSAIR_SF` | Maximum price allowed for a match, applies to Corsair PSUs |
 | `MAX_PRICE_SERIES_DARKHERO` | Maximum price allowed for a match, applies to ASUS Dark Hero motherboards |
 | `MAX_PRICE_SERIES_RYZEN5600` | Maximum price allowed for a match, applies AMD 5600 series cpus |
@@ -144,8 +148,9 @@ Used with the `STORES` variable.
 | Micro Center | US | `microcenter`|
 | MightyApe | NZ | `mightyape`|
 | Mindfactory | DE | `mindfactory` |
-| MSY | AU |  `msy`|
-| Multicom | NO |  `multicom`|
+| MSI | DE | `msi-de` |
+| MSY | AU | `msy`|
+| Multicom | NO | `multicom`|
 | Mwave | AU | `mwave`|
 | Neobyte | ES | `neobyte`|
 | Netonnet | NO | `netonnet-no`|
@@ -226,24 +231,24 @@ Used with the `SHOW_ONLY_BRANDS` and `SHOW_ONLY_MODELS` variables.
 | Brand | Model |
 |:---:|---|
 | `amd` | `5600x`, `5800x`, `5900x`, `5950x`, `amd reference` |
-| `asus` | `crosshair viii`, `dual`, `dual oc`, `ekwb`, `strix`, `strix oc`, `strix white`, `tuf`, `tuf oc` |
+| `asus` | `astral`, `astral oc`, `astral lc`, `astral lc oc`, `crosshair viii`, `dual`, `dual oc`, `ekwb`, `prime`, `prime oc`, `strix`, `strix oc`, `strix white`, `tuf`, `tuf oc` |
 | `corsair` | `750 platinum`, `600 platinum`, `600 gold` |
 | `colorful` | `igame advanced oc`, `igame vulcan oc` |
 | `evga` | `ftw3`, `ftw3 black`, `ftw3 ultra`, `ftw3 ultra hybrid`, `ftw3 ultra hydro copper`, `xc3`, `xc black`, `xc gaming`, `xc3 black`, `xc3 ultra`, `xc3 ultra hybrid` |
 | `gainward` | `phantom gs`, `phoenix`, `phoenix gs`, `phoenix gs oc`, `ghost` |
-| `gigabyte` | `aorus master`, `aorus xtreme`, `aorus xtreme waterforce`, `aorus xtreme waterforce wb`, `eagle`, `eagle oc`, `gaming`, `gaming oc`, `gaming oc pro`, `turbo`, `vision`, `vision oc` |
+| `gigabyte` | `aero sff`, `aero oc`, `aero oc sff`, `aorus master`, `aorus master ice`, `aorus xtreme`, `aorus xtreme waterforce`, `aorus xtreme waterforce wb`, `eagle`, `eagle oc`, `gaming`, `gaming oc`, `gaming trio oc`, `gaming trio oc white`, `gaming oc pro`, `turbo`, `vision`, `vision oc`, `windforce`, `windforce oc`, `windforce sff`, `windforce oc sff` |
 | `galax` | `sg`, `sg oc` |
-| `inno3d` | `gaming x3`, `ichill x3`, `ichill x4`, `ichill frostbite`, `twin x2`, `twin x2 oc` |
+| `inno3d` | `gaming x3`, `ichill x3`, `ichill x4`, `ichill frostbite`, `twin x2`, `twin x2 oc`, `x3`, `x3 oc`, `x3 oc white` |
 | `kfa2` | `sg`, `sg oc` |
 | `leadtek` | `hurricane` |
 | `microsoft` | `xbox series x`, `xbox series s` |
-| `msi` | `gaming x trio`, `suprim`, `suprim x`, `ventus 2x oc`, `ventus 3x`, `ventus 3x oc` |
+| `msi` | `gaming x trio`, `inspire 3x oc`, `suprim`, `suprim x`, `suprim soc`, `suprim liquid soc`, `vanguard soc launch edition`, `ventus 2x oc`, `ventus 3x`, `ventus 3x oc`, `ventus 3x oc plus`, `ventus 3x oc white` |
 | `nvidia` | `founders edition` |
 | `palit` | `gamerock oc`, `gaming pro`, `gaming pro oc` |
-| `pny` | `dual fan`, `xlr8 epic x`, `xlr8 revel`, `xlr8 uprising` |
+| `pny` | `argb oc`, `dual fan`, `xlr8 epic x`, `xlr8 revel`, `xlr8 uprising` |
 | `sony` | `ps5 console`, `ps5 digital` |
 | `xfx` | `merc`, `amd reference` |
-| `zotac` | `amp holo`, `amp extreme holo`, `amp white`, `trinity`, `trinity oc`, `twin edge`, `twin edge oc`, `twin edge oc white` |
+| `zotac` | `amp holo`, `amp extreme infinity`, `amp extreme holo`, `amp white`, `solid`, `solid oc`, `trinity`, `trinity oc`, `twin edge`, `twin edge oc`, `twin edge oc white` |
 
 ## Supported series
 
@@ -268,6 +273,10 @@ Used with the `SHOW_ONLY_SERIES` variable.
 | Nvidia RTX 4080 12G | `4080-12g` |
 | Nvidia RTX 4080 16G | `4080-16g` |
 | Nvidia RTX 4090 | `4090` |
+| Nvidia RTX 5070 | `5070` |
+| Nvidia RTX 5070 Ti | `5070ti` |
+| Nvidia RTX 5080 | `5080` |
+| Nvidia RTX 5090 | `5090` |
 | Corsair SFX PSU | `sf` |
 | Crosshair VIII | `darkhero` |
 | Sony PS5 | `sonyps5c` |
