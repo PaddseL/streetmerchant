@@ -1,4 +1,6 @@
-import {Browser, launch} from 'puppeteer';
+import {Browser} from 'puppeteer';
+import puppeteer from 'puppeteer-extra';
+import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import {config} from '../src/config';
 import {logger} from '../src/logger';
 import {Link, Store} from '../src/store/model';
@@ -88,7 +90,9 @@ export async function launchTestBrowser(): Promise<Browser> {
     logger.info('ℹ puppeteer config: ', args);
   }
 
-  const browser = await launch({
+  puppeteer.use(StealthPlugin());
+
+  const browser = await puppeteer.launch({
     args,
     defaultViewport: {
       height: config.page.height,

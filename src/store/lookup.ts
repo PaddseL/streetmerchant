@@ -375,7 +375,7 @@ async function handleResponse(
   if (!isStatusCodeInRange(statusCode, successStatusCodes)) {
     if (statusCode === 429) {
       logger.warn(Print.rateLimit(link, store, true));
-    } else if (statusCode === 503) {
+    } else if (statusCode === 503 || statusCode === 403) {
       if (await checkIsCloudflare(store, page, link)) {
         if (recursionDepth > 4) {
           logger.warn(Print.recursionLimit(link, store, true));

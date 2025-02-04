@@ -1,7 +1,9 @@
 import * as Process from 'process';
 import {config} from './config'; // Needs to be loaded first
 import {startAPIServer, stopAPIServer} from './web';
-import Puppeteer, {Browser} from 'puppeteer';
+import {Browser} from 'puppeteer';
+import puppeteer from 'puppeteer-extra';
+import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import {getSleepTime} from './util';
 import {logger} from './logger';
 import {storeList} from './store/model';
@@ -77,6 +79,9 @@ async function loopMain() {
 export async function launchBrowser(): Promise<Browser> {
   const args: string[] = [];
 
+  // Prevent Cloudflare from detecting the headless chrome instance
+  args.push('--disable-blink-features=AutomationControlled');
+
   // Skip Chromium Linux Sandbox
   // https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-sandbox
   if (config.browser.isTrusted) {
@@ -107,7 +112,10 @@ export async function launchBrowser(): Promise<Browser> {
   }
 
   await stop();
-  const browser = await Puppeteer.launch({
+
+  puppeteer.use(StealthPlugin());
+
+  const browser = await puppeteer.launch({
     args,
     defaultViewport: {
       height: config.page.height,
