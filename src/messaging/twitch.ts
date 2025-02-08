@@ -22,54 +22,60 @@ if (existsSync('./twitch.json')) {
   tokenData = JSON.parse(readFileSync('./twitch.json', 'utf-8'));
 }
 
-const authProvider: RefreshingAuthProvider = new RefreshingAuthProvider(
+const authProvider: RefreshingAuthProvider | undefined = new RefreshingAuthProvider(
 	{
 		clientId: twitch.clientId,
 		clientSecret: twitch.clientSecret,
 	}
-);
+) ?? undefined;
 
-authProvider.onRefresh((userId: string, newTokenData: AccessToken) => writeFileSync(`./twitch.json`, JSON.stringify(newTokenData, null, 4), 'utf-8'));
+authProvider?.onRefresh((userId: string, newTokenData: AccessToken) => writeFileSync(`./twitch.json`, JSON.stringify(newTokenData, null, 4), 'utf-8'));
 
 let chatClient: ChatClient;
-authProvider.addUserForToken(tokenData, ['chat']).then(() => {
-  chatClient = new ChatClient(
-    {
-      authProvider,
-      channels: [twitch.channel],
-      authIntents: ['chat']
-    }
-  );
-  
-  chatClient.onJoin((channel, user) => {
-    if (channel === twitch.channel && user === chatClient.irc.currentNick) {
-      while (messages.length) {
-        const message: string | undefined = messages.shift();
+if (!!authProvider && twitch.clientId && twitch.clientSecret && twitch.channel) {
+  authProvider.addUserForToken(tokenData, ['chat']).then(() => {
+    chatClient = new ChatClient(
+      {
+        authProvider,
+        channels: [twitch.channel],
+        authIntents: ['chat']
+      }
+    );
+    
+    chatClient.onJoin((channel, user) => {
+      if (channel === twitch.channel && user === chatClient.irc.currentNick) {
+        while (messages.length) {
+          const message: string | undefined = messages.shift();
 
-        if (message !== undefined) {
-          try {
-            void chatClient.say(channel, message);
-            logger.info('✔ twitch message sent');
-          } catch (error: unknown) {
-            logger.error("✖ couldn't send twitch message", error);
+          if (message !== undefined) {
+            try {
+              void chatClient.say(channel, message);
+              logger.info('✔ twitch message sent');
+            } catch (error: unknown) {
+              logger.error("✖ couldn't send twitch message", error);
+            }
           }
         }
       }
+    
+      void chatClient.quit();
+    });
+    
+    chatClient.onDisconnect(() => {
+      alreadySaying = false;
+    });
+
+    if (messages.length > 0 && !alreadySaying) {
+      alreadySaying = true;
+
+      chatClient.connect();
     }
-  
-    void chatClient.quit();
-  });
-  
-  chatClient.onDisconnect(() => {
-    alreadySaying = false;
-  });
 
-  if (messages.length > 0 && !alreadySaying) {
-    alreadySaying = true;
-
-    chatClient.connect();
-  }
-});
+    logger.info('✔ twitch integration initialized');
+  }).catch((error: unknown) => {
+    logger.error("✖ couldn't initialize twitch integration", error);
+  });
+}
 
 export function sendTwitchMessage(link: Link, store: Store) {
   if (
@@ -82,7 +88,7 @@ export function sendTwitchMessage(link: Link, store: Store) {
     logger.debug('↗ sending twitch message');
 
     messages.push(
-      `${Print.inStock(link, store)}\nLINK: ${link.cartUrl ? link.cartUrl : link.url}`
+      `${new Date().toLocaleTimeString()} ${Print.inStock(link, store)}\nLINK: ${link.cartUrl ? link.cartUrl : link.url}`
     );
 
     if (!!chatClient && !alreadySaying) {
